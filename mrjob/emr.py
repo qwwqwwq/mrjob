@@ -1282,6 +1282,9 @@ class EMRJobRunner(MRJobRunner):
         if steps:
             args['steps'] = steps
 
+        if self._opts['subnet']:
+            args['api_params'] = { 'Instances.Ec2SubnetId' : self._opts['subnet'] }
+
         return args
 
     @property
